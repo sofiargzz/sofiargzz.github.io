@@ -1,0 +1,264 @@
+/* ======================================================
+   LAYOUT GENERAL
+   Este archivo se encarga de la estructura y colocación
+   de los elementos principales de la página.
+   No define colores ni estilos decorativos complejos.
+   ====================================================== */
+
+
+/* ------------------------------------------------------
+   CONTENEDOR PRINCIPAL
+   Limita el ancho del contenido y lo centra en pantalla
+   para mejorar la lectura en pantallas grandes.
+------------------------------------------------------ */
+.container {
+  width: min(100% - 24px, var(--maxw));
+  margin: 0 auto;
+}
+
+
+/* ------------------------------------------------------
+   HEADER
+   Espacio vertical para separar el encabezado del resto
+   del contenido y evitar que se vea “apretado”.
+------------------------------------------------------ */
+.header {
+  padding: 28px 0 10px;
+}
+
+
+/* ------------------------------------------------------
+   TÍTULO SUPERIOR
+   Texto principal del portfolio. Se usa tipografía fuerte
+   y espaciado entre letras para darle presencia.
+------------------------------------------------------ */
+.title-top {
+  margin: 0;
+  font-weight: bold;
+  letter-spacing: 0.04em;
+  color: #2a0f4f; /* morado oscuro visible sobre fondo pastel */
+}
+
+
+/* ------------------------------------------------------
+   LÍNEA SEPARADORA
+   Separador visual entre el título y la navegación.
+------------------------------------------------------ */
+.line {
+  height: 2px;
+  background: #2a0f4f;
+  opacity: 0.5;
+  margin-top: 10px;
+}
+
+
+/* ------------------------------------------------------
+   GRID PRINCIPAL (HERO)
+   Contenedor que agrupa la presentación principal.
+   En móvil los elementos se apilan; en escritorio
+   se organizan en columnas.
+------------------------------------------------------ */
+.top-grid {
+  display: grid;
+  gap: 16px;
+  margin: 16px 0;
+}
+
+
+/* ------------------------------------------------------
+   ADAPTACIÓN A ESCRITORIO
+   En pantallas grandes se muestran dos columnas:
+   - Contenido principal más ancho
+   - Bloque secundario más estrecho
+------------------------------------------------------ */
+@media (min-width: 900px) {
+  .top-grid {
+    grid-template-columns: 2fr 1fr;
+    align-items: start;
+  }
+}
+
+
+/* ------------------------------------------------------
+   FOOTER
+   Espacio final para cerrar visualmente la página
+   sin que el contenido quede demasiado pegado.
+------------------------------------------------------ */
+.footer {
+  padding: 20px 0 30px;
+}
+
+
+/* ------------------------------------------------------
+   ANIMACIÓN DEL TÍTULO
+   Aparición suave al cargar la página para dar dinamismo.
+------------------------------------------------------ */
+.title-top {
+  animation: fadeUp 450ms ease-out both;
+}
+
+
+/* ------------------------------------------------------
+   ANIMACIÓN DE LA LÍNEA
+   Se retrasa ligeramente para crear una pequeña secuencia.
+------------------------------------------------------ */
+.line {
+  animation: fadeUp 450ms ease-out both;
+  animation-delay: 120ms;
+}
+
+
+/* ------------------------------------------------------
+   ANIMACIÓN DEL FOOTER
+   Mantiene coherencia visual con el resto de la página.
+------------------------------------------------------ */
+.footer {
+  animation: fadeUp 450ms ease-out;
+  animation-delay: 200ms;
+  animation-fill-mode: both;
+}
+
+
+/* ------------------------------------------------------
+   CONTENIDO PRINCIPAL
+   Se añade espacio inferior para que el footer
+   no quede demasiado cerca del contenido.
+------------------------------------------------------ */
+main.container {
+  padding-bottom: 40px;
+}
+
+
+/* ------------------------------------------------------
+   SECCIONES PRINCIPALES
+   Se usa position relative para poder añadir
+   detalles decorativos sin afectar al HTML.
+------------------------------------------------------ */
+section.box {
+  position: relative;
+}
+
+
+/* ------------------------------------------------------
+   LÍNEA DECORATIVA SUPERIOR DE LAS SECCIONES
+   Detalle visual sutil que separa las secciones
+   sin añadir más elementos HTML.
+------------------------------------------------------ */
+section.box::before {
+  content: "";
+  position: absolute;
+  top: -10px;
+  left: 12px;
+  right: 12px;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+
+/* ------------------------------------------------------
+   NAVEGACIÓN PRINCIPAL
+   Se mantiene visible al hacer scroll para facilitar
+   el acceso a las distintas secciones.
+------------------------------------------------------ */
+.top-nav {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+
+  display: flex;
+  gap: 14px;
+  padding: 10px 0 6px;
+  background: var(--bg);
+}
+
+
+/* ------------------------------------------------------
+   ENLACES DE NAVEGACIÓN
+   Área clicable amplia para mejorar la usabilidad.
+------------------------------------------------------ */
+.top-nav a {
+  text-decoration: none;
+  color: #2a0f4f;
+  font-weight: bold;
+  padding: 6px 10px;
+  border-radius: 8px;
+}
+
+
+/* ------------------------------------------------------
+   HOVER DE NAVEGACIÓN
+   Feedback visual al pasar el ratón sin afectar
+   a la legibilidad del texto.
+------------------------------------------------------ */
+.top-nav a:hover {
+  background: rgba(109, 40, 217, 0.12);
+}
+
+
+/* ======================================================
+   HEADER LAYOUT
+   Preparado para organizar navegación y botón
+   de accesibilidad en una misma zona.
+====================================================== */
+
+
+/* ------------------------------------------------------
+   HEADER ALTERNATIVO
+   Clase preparada para futuras ampliaciones.
+------------------------------------------------------ */
+.site-header {
+  padding: 16px 0;
+}
+
+
+/* ------------------------------------------------------
+   BARRA DEL HEADER
+   Distribuye los elementos del encabezado
+   de forma horizontal y equilibrada.
+------------------------------------------------------ */
+.header-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+
+/* ------------------------------------------------------
+   CONTENEDOR DEL HEADER
+   Se usa como referencia para posicionar el botón
+   de accesibilidad sin romper el diseño.
+------------------------------------------------------ */
+.header .container {
+  position: relative;
+  padding-top: 12px;
+  padding-right: 160px; /* espacio reservado para el botón */
+}
+
+
+/* ------------------------------------------------------
+   BOTÓN DE ACCESIBILIDAD
+   Siempre visible en la esquina superior derecha
+   para que sea fácil de encontrar.
+------------------------------------------------------ */
+.a11y-toggle {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  z-index: 20;
+}
+
+
+/* ------------------------------------------------------
+   AJUSTES EN MÓVIL
+   El botón se reduce ligeramente para que
+   no resulte invasivo en pantallas pequeñas.
+------------------------------------------------------ */
+@media (max-width: 600px) {
+  .a11y-toggle {
+    top: 6px;
+    right: 6px;
+    padding: 6px 10px;
+    font-size: 0.85rem;
+  }
+}
