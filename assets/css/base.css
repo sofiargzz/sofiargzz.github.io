@@ -1,0 +1,142 @@
+/* ======================================================
+   base.css
+   Este archivo define:
+   - Colores y tamaños del diseño (variables)
+   - Estilos básicos del sitio (tipografía, fondo)
+   - Modo accesibilidad (blanco y negro)
+   ====================================================== */
+
+
+/* ------------------------------------------------------
+   VARIABLES GENERALES (modo normal)
+   Aquí están los colores y tamaños principales del sitio.
+   Si cambias algo aquí, se actualiza en todo el proyecto.
+------------------------------------------------------ */
+:root {
+  /* Fondo morado pastel */
+  --bg: #eadcff;
+
+  /* Texto principal y secundario */
+  --text: #f5f3ff;
+  --muted: #d6c8ff;
+
+  /* Colores de acento (links, detalles) */
+  --accent: #c4b5fd;
+  --accent-soft: #a78bfa;
+
+  /* Cajas (cuadros) y bordes */
+  --box: #3b1e5a;
+  --border: #6d4aa8;
+
+  /* Medidas generales */
+  --radius: 10px;
+  --maxw: 980px;
+
+  /* Tipografía fluida (cumple el requisito de clamp) */
+  --base: 16px;
+  --h1: clamp(1.6rem, 2.5vw, 2.1rem);
+  --h2: clamp(1.1rem, 1.8vw, 1.3rem);
+}
+
+
+/* ------------------------------------------------------
+   AJUSTES BÁSICOS
+   Evitan problemas típicos de tamaño y espaciado.
+------------------------------------------------------ */
+* {
+  box-sizing: border-box;
+}
+
+
+/* ------------------------------------------------------
+   ESTILO GENERAL DEL BODY
+   Define tipografía, color del texto y el fondo.
+   El fondo tiene gradientes suaves para que no sea plano.
+------------------------------------------------------ */
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: var(--base);
+  line-height: 1.6;
+  color: var(--text);
+
+  background:
+    radial-gradient(
+      800px 400px at 10% 5%,
+      rgba(167, 139, 250, 0.35),
+      transparent 60%
+    ),
+    radial-gradient(
+      700px 350px at 90% 30%,
+      rgba(109, 40, 217, 0.25),
+      transparent 60%
+    ),
+    var(--bg);
+
+  /* Entrada suave al cargar (se desactiva en reduced motion en components.css) */
+  animation: pageFade 500ms ease-out;
+}
+
+
+/* ------------------------------------------------------
+   ENLACES
+   Mantienen un color consistente en todo el sitio.
+------------------------------------------------------ */
+a {
+  color: var(--accent);
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+
+/* ------------------------------------------------------
+   HR (líneas)
+   Quitamos el borde por defecto para controlar el diseño
+   desde nuestros estilos.
+------------------------------------------------------ */
+hr {
+  border: none;
+}
+
+
+/* ------------------------------------------------------
+   ANIMACIÓN DE ENTRADA
+   Hace que la página aparezca suave al cargar.
+------------------------------------------------------ */
+@keyframes pageFade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+
+/* ======================================================
+   MODO ACCESIBILIDAD (BLANCO Y NEGRO)
+   Se activa con: <html data-a11y="on">
+   Objetivo: máxima legibilidad y cero colores.
+   ====================================================== */
+html[data-a11y="on"] {
+  --bg: #ffffff;
+  --box: #ffffff;
+
+  --text: #000000;
+  --muted: #000000;
+
+  --accent: #000000;
+  --accent-soft: #000000;
+
+  --border: #000000;
+
+  /* Forzamos que el navegador use esquema claro */
+  color-scheme: light;
+}
+
+/* En modo accesible, el fondo debe ser blanco plano */
+html[data-a11y="on"] body {
+  background: #ffffff !important;
+}
