@@ -1,0 +1,20 @@
+{
+  "name": "NOMBRE DEL DISEÑADOR/A — Portfolio",
+  "short_name": "Portfolio",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#eadcff",
+  "theme_color": "#2a0f4f",
+  "icons": [
+    {
+      "src": "./assets/icons/favicon-32.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "src": "./assets/icons/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ]
+}
