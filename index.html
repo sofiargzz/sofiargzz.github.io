@@ -1,1 +1,217 @@
-Test
+<!doctype html>
+<html lang="es">
+  <head>
+    <!-- ==============================
+         Metadatos básicos
+         ============================== -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- ==============================
+         Título y SEO básico
+         ============================== -->
+    <title>Portfolio de Diseño e Ilustración</title>
+    <meta
+      name="description"
+      content="Portfolio de diseño e ilustración: servicios, proyectos y contacto. Plantilla responsive en HTML, CSS y JavaScript."
+    />
+    <meta
+      name="keywords"
+      content="portfolio, diseño, ilustración, branding, diseño gráfico, UDIT"
+    />
+    <meta name="author" content="NOMBRE DEL DISEÑADOR/A" />
+
+    <!-- Color del navegador en móviles -->
+    <meta name="theme-color" content="#2a0f4f" />
+
+    <!-- ==============================
+         Open Graph (Facebook/LinkedIn)
+         ============================== -->
+    <meta property="og:title" content="NOMBRE DEL DISEÑADOR/A — Portfolio" />
+    <meta
+      property="og:description"
+      content="Diseño e ilustración creativa para marcas y proyectos. Servicios, trabajos y contacto."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://TU-USUARIO.github.io/TU-REPO/" />
+    <meta
+      property="og:image"
+      content="https://TU-USUARIO.github.io/TU-REPO/assets/images/og-image.png"
+    />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+
+    <!-- ==============================
+         Twitter Card
+         ============================== -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="NOMBRE DEL DISEÑADOR/A — Portfolio" />
+    <meta
+      name="twitter:description"
+      content="Portfolio de diseño e ilustración: proyectos, servicios y contacto."
+    />
+    <meta
+      name="twitter:image"
+      content="https://TU-USUARIO.github.io/TU-REPO/assets/images/og-image.png"
+    />
+
+    <!-- ==============================
+         Favicons
+         (debes crear estos archivos)
+         ============================== -->
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="./assets/images/favicon-16.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./assets/images/favicon-32.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="./assets/images/apple-touch-icon.png"
+    />
+
+    <!-- Manifest (opcional pero recomendable) -->
+    <link rel="manifest" href="./manifest.json" />
+
+    <!-- ==============================
+         CSS y JS
+         ============================== -->
+    <link rel="stylesheet" href="./assets/css/index.css" />
+    <script defer src="./assets/js/main.js"></script>
+  </head>
+
+  <body>
+    <!-- HEADER
+         - Título del sitio
+         - Navegación interna
+         - Toggle de accesibilidad -->
+    <header class="header">
+      <div class="container">
+        <p class="title-top">PORTFOLIO DE DISEÑO E ILUSTRACIÓN</p>
+        <hr class="line" />
+
+        <!-- Navegación por secciones -->
+        <nav class="top-nav" aria-label="Navegación">
+          <a class="nav-link" href="#services">Servicios</a>
+          <a class="nav-link" href="#projects">Proyectos</a>
+          <a class="nav-link" href="#contact">Contacto</a>
+        </nav>
+
+        <!-- Botón de accesibilidad:
+             - Activa modo B/N sin animaciones
+             - Guarda preferencia en localStorage -->
+        <button
+          class="a11y-toggle"
+          type="button"
+          id="a11yToggle"
+          aria-pressed="false"
+        >
+          Accesibilidad
+        </button>
+      </div>
+    </header>
+
+    <!-- MAIN
+         Contenido principal del portfolio -->
+    <main id="main" class="container">
+      <!-- Presentación -->
+      <section class="top-grid" aria-label="Presentación">
+        <article class="box big-box">
+          <h1 class="name">Nombre del diseñador/a</h1>
+          <p class="subtitle">
+            Diseño e ilustración creativa para marcas y proyectos
+          </p>
+
+          <!-- Placeholder de imagen (para reemplazar por una imagen real) -->
+          <div class="img-placeholder" aria-label="Imagen (placeholder)"></div>
+        </article>
+
+        <aside class="box">
+          <h2>Sobre mí</h2>
+          <p>
+            Soy <strong>[tu nombre]</strong>, diseñador/a e ilustrador/a con
+            experiencia en proyectos creativos de ilustración, branding y diseño
+            gráfico.
+          </p>
+        </aside>
+      </section>
+
+      <!-- Servicios -->
+      <section class="box" id="services" aria-label="Servicios">
+        <h2>Servicios</h2>
+        <ul>
+          <li>Ilustración digital y tradicional</li>
+          <li>Branding y logotipos</li>
+          <li>Diseño editorial</li>
+          <li>Packaging</li>
+          <li>Diseño para redes sociales</li>
+        </ul>
+      </section>
+
+      <!-- Proyectos -->
+      <section class="box" id="projects" aria-label="Proyectos">
+        <article class="project">
+          <h2 class="project-title">Proyecto 1 – Portada Revista Creativa</h2>
+          <p><strong>Cliente:</strong> Editorial XYZ</p>
+          <p><strong>Tipo:</strong> Ilustración editorial</p>
+          <p>
+            <strong>Descripción:</strong> Diseño de una portada moderna y visual
+            para una revista creativa.
+          </p>
+          <p>
+            <strong>Resultado:</strong> Ilustración final publicada en edición
+            impresa y digital.
+          </p>
+        </article>
+
+        <hr class="soft-line" />
+
+        <article class="project">
+          <h2 class="project-title">Proyecto 2 – Branding Marca Gourmet</h2>
+          <p><strong>Cliente:</strong> Gourmet Foods</p>
+          <p><strong>Tipo:</strong> Branding y packaging</p>
+          <p>
+            <strong>Descripción:</strong> Creación de identidad visual completa
+            para una marca gourmet.
+          </p>
+          <p>
+            <strong>Resultado:</strong> Logotipo, etiquetas y packaging listos
+            para producción.
+          </p>
+        </article>
+      </section>
+
+      <!-- Contacto -->
+      <section class="box" id="contact" aria-label="Contacto">
+        <h2>Contacto</h2>
+        <p>
+          <strong>Email:</strong>
+          <a href="mailto:tucorreo@email.com">tucorreo@email.com</a>
+        </p>
+
+        <p class="social">
+          <a href="#" target="_blank" rel="noreferrer">Instagram</a>
+          <span>/</span>
+          <a href="#" target="_blank" rel="noreferrer">Behance</a>
+          <span>/</span>
+          <a href="#" target="_blank" rel="noreferrer">LinkedIn</a>
+        </p>
+      </section>
+    </main>
+
+    <!-- FOOTER
+         - Año automático por JS + nombre de diseñador -->
+    <footer class="footer">
+      <div class="container">
+        <p>© <span id="year"></span> Nombre del diseñador/a</p>
+      </div>
+    </footer>
+  </body>
+</html>
