@@ -1,0 +1,483 @@
+/* =========================================================
+   components.css
+   Estilos de “componentes” reutilizables:
+   - Cuadros (cards)
+   - Textos (títulos, subtítulos)
+   - Proyectos, listas, footer
+   - Página 404
+   - Animaciones y accesibilidad
+   ========================================================= */
+
+/* =========================================================
+   1) CUADROS DE CONTENIDO (.box)
+   Son las “tarjetas” principales del diseño.
+   ========================================================= */
+
+.box {
+  background: var(--box);
+  border: 2px solid var(--border);
+  border-left: 6px solid var(--accent-soft);
+  border-radius: var(--radius);
+  padding: 18px 18px 18px 16px;
+  margin-bottom: 22px;
+
+  /* Sombra suave para que parezca “elevado” sin exagerar */
+  box-shadow: 0 8px 20px rgba(42, 15, 79, 0.25);
+
+  /* Entrada suave al cargar (se desactiva en accesibilidad) */
+  animation: fadeUp 450ms ease-out both;
+
+  /* Transición solo para movimiento/sombra */
+  transition: transform 160ms ease, box-shadow 160ms ease;
+}
+
+/* Pequeño efecto al pasar el ratón: SOLO movimiento/sombra
+   (no cambiamos el fondo para no perder legibilidad) */
+.box:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 30px rgba(42, 15, 79, 0.35);
+}
+
+/* Espaciado vertical automático dentro de las tarjetas.
+   Evita que el contenido se vea “apretado”. */
+.box > * {
+  margin: 0;
+}
+.box > * + * {
+  margin-top: 12px;
+}
+
+/* Ajustes de lectura dentro de tarjetas */
+.box > p {
+  line-height: 1.7;
+}
+.box > ul {
+  padding-left: 18px;
+}
+.box > hr {
+  margin: 16px 0;
+}
+
+/* =========================================================
+   2) HERO (cuadro grande)
+   El primero suele ser el más importante visualmente.
+   ========================================================= */
+
+.big-box {
+  border-left-color: var(--accent);
+}
+
+/* Nombre (H1) */
+.big-box .name {
+  font-size: var(--h1);
+  color: #f5f3ff;
+  text-decoration: underline;
+  text-decoration-color: var(--accent-soft);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+
+  animation: slideInLeft 500ms ease-out;
+}
+
+/* Subtítulo */
+.big-box .subtitle {
+  color: #e9ddff;
+  text-decoration: underline;
+  text-decoration-color: var(--accent-soft);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+
+  animation: slideInLeft 500ms ease-out;
+  animation-delay: 120ms;
+  animation-fill-mode: both;
+}
+
+/* =========================================================
+   3) TÍTULOS DE SECCIÓN (h2)
+   Mantienen coherencia en todo el portfolio.
+   ========================================================= */
+
+h2 {
+  font-size: var(--h2);
+  color: var(--accent);
+  text-decoration: underline;
+  text-decoration-color: var(--accent-soft);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+
+  /* Feedback suave para ratón */
+  transition: color 160ms ease;
+}
+
+h2:hover {
+  color: #e9ddff;
+}
+
+/* Detalle decorativo bajo el h2 (una pequeña barrita).
+   Aporta jerarquía sin añadir HTML extra. */
+.box > h2::after {
+  content: "";
+  display: block;
+  width: 36px;
+  height: 3px;
+  margin-top: 8px;
+  background: var(--accent-soft);
+  border-radius: 999px;
+  opacity: 0.9;
+}
+
+/* Servicios: quitamos la barrita extra (para que no parezca “doble línea”) */
+#services > h2::after {
+  display: none;
+}
+
+/* =========================================================
+   4) PLACEHOLDER DE IMAGEN
+   Área donde luego podrás poner una imagen real.
+   ========================================================= */
+
+.img-placeholder {
+  height: 200px;
+  border-radius: 8px;
+  border: 2px dashed var(--border);
+
+  background: linear-gradient(
+    135deg,
+    rgba(167, 139, 250, 0.35),
+    rgba(109, 40, 217, 0.2)
+  );
+}
+
+/* =========================================================
+   5) LISTAS (Servicios)
+   Pequeña animación escalonada para que se vea más cuidado.
+   ========================================================= */
+
+ul li {
+  margin-top: 6px;
+  animation: fadeUp 400ms ease-out both;
+}
+
+/* Cascada simple (si hay más de 5 items, los extra entran sin delay) */
+ul li:nth-child(1) {
+  animation-delay: 60ms;
+}
+ul li:nth-child(2) {
+  animation-delay: 120ms;
+}
+ul li:nth-child(3) {
+  animation-delay: 180ms;
+}
+ul li:nth-child(4) {
+  animation-delay: 240ms;
+}
+ul li:nth-child(5) {
+  animation-delay: 300ms;
+}
+
+/* =========================================================
+   6) PROYECTOS
+   Tarjetas internas y separador entre proyectos.
+   ========================================================= */
+
+.project {
+  padding: 8px 0;
+  animation: fadeUp 500ms ease-out both;
+}
+
+/* Aparición “uno detrás de otro” (funciona con: project + hr + project) */
+#projects .project:nth-child(1) {
+  animation-delay: 120ms;
+}
+#projects .project:nth-child(3) {
+  animation-delay: 340ms;
+}
+#projects .project:nth-child(5) {
+  animation-delay: 560ms;
+}
+
+.project-title {
+  margin: 0;
+  color: #f5f3ff;
+  text-decoration: underline;
+  text-decoration-color: var(--accent-soft);
+  text-underline-offset: 3px;
+}
+
+.project p {
+  margin: 6px 0 0;
+}
+
+/* Separador entre proyectos (debe ser visible siempre) */
+.soft-line {
+  height: 1px;
+  background: var(--border);
+  opacity: 0.6;
+  margin: 16px 0;
+  animation: lineGrow 400ms ease-out both;
+}
+
+/* =========================================================
+   7) SOCIAL / FOOTER
+   ========================================================= */
+
+.social {
+  margin: 0;
+}
+
+.social span {
+  color: var(--muted);
+  padding: 0 6px;
+}
+
+.footer {
+  color: #2a0f4f;
+  margin-top: 32px;
+  padding-top: 12px;
+  border-top: 2px solid rgba(42, 15, 79, 0.25);
+}
+
+.footer p {
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+/* =========================================================
+   7.5) BOTÓN DE ACCESIBILIDAD
+   Botón pequeño y discreto arriba a la derecha del header.
+   ========================================================= */
+
+.a11y-toggle {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+
+  font-size: 0.75rem;
+  padding: 4px 8px;
+  border-radius: 999px;
+
+  border: 1px solid var(--accent-soft);
+  background: transparent;
+  color: var(--accent-soft);
+
+  font-weight: 600;
+  cursor: pointer;
+  opacity: 0.85;
+  transition: opacity 160ms ease;
+}
+
+.a11y-toggle:hover {
+  opacity: 1;
+}
+
+.a11y-toggle:focus-visible {
+  outline: 3px solid rgba(167, 139, 250, 0.8);
+  outline-offset: 3px;
+}
+
+/* Ajuste en móvil: un poco más pequeño */
+@media (max-width: 600px) {
+  .a11y-toggle {
+    top: 6px;
+    right: 6px;
+    font-size: 0.7rem;
+    padding: 3px 7px;
+  }
+}
+
+/* En modo accesibilidad, el botón también debe ser B/N */
+html[data-a11y="on"] .a11y-toggle {
+  border-color: #000 !important;
+  color: #000 !important;
+  background: #fff !important;
+  opacity: 1 !important;
+}
+
+/* =========================================================
+   8) PÁGINA 404
+   Reutiliza el estilo del proyecto y se ve consistente.
+   ========================================================= */
+
+.error-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /* Fondo suave coherente con el resto */
+  background:
+    radial-gradient(700px 350px at 20% 20%, rgba(167, 139, 250, 0.35), transparent 60%),
+    radial-gradient(700px 350px at 80% 80%, rgba(109, 40, 217, 0.25), transparent 60%),
+    var(--bg);
+}
+
+.error-wrapper {
+  padding: 24px;
+}
+
+.error-card {
+  background: var(--box);
+  border: 2px solid var(--border);
+  border-radius: var(--radius);
+  padding: 28px 32px;
+  text-align: center;
+  max-width: 360px;
+  box-shadow: 0 12px 30px rgba(42, 15, 79, 0.35);
+
+  animation: fadeUp 450ms ease-out both;
+}
+
+.error-code {
+  margin: 0;
+  font-size: clamp(2.4rem, 6vw, 3rem);
+  color: #f5f3ff;
+}
+
+.error-text {
+  margin: 12px 0 20px;
+  color: #e9ddff;
+}
+
+.error-link {
+  display: inline-block;
+  padding: 8px 14px;
+  border-radius: 6px;
+  background: var(--accent-soft);
+  color: #2a0f4f;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.error-link:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(42, 15, 79, 0.35);
+}
+
+/* =========================================================
+   9) ANIMACIONES (keyframes)
+   Animaciones suaves y cortas.
+   ========================================================= */
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes lineGrow {
+  from {
+    width: 0;
+    opacity: 0;
+  }
+  to {
+    width: 100%;
+    opacity: 0.6;
+  }
+}
+
+/* =========================================================
+   10) ACCESIBILIDAD: reducir movimiento
+   Si el usuario prefiere menos animación, lo respetamos.
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .box:hover {
+    transform: none;
+    box-shadow: none;
+  }
+}
+
+/* =========================================================
+   11) MODO ACCESIBILIDAD (blanco y negro)
+   Objetivo: máxima legibilidad y cero distracciones.
+   ========================================================= */
+
+/* Quitar animaciones y transiciones */
+html[data-a11y="on"] * {
+  animation: none !important;
+  transition: none !important;
+}
+
+/* Cajas: blanco/negro, sin sombras ni hover */
+html[data-a11y="on"] .box {
+  background: #fff !important;
+  border: 2px solid #000 !important;
+  border-left: 2px solid #000 !important;
+  box-shadow: none !important;
+}
+
+html[data-a11y="on"] .box:hover {
+  transform: none !important;
+  box-shadow: none !important;
+  background: #fff !important;
+}
+
+/* Todo el texto importante en negro */
+html[data-a11y="on"] h1,
+html[data-a11y="on"] h2,
+html[data-a11y="on"] .project-title,
+html[data-a11y="on"] .subtitle,
+html[data-a11y="on"] p,
+html[data-a11y="on"] li,
+html[data-a11y="on"] span {
+  color: #000 !important;
+  text-decoration-color: #000 !important;
+}
+
+/* Decoración bajo h2 en negro */
+html[data-a11y="on"] .box > h2::after {
+  background: #000 !important;
+}
+
+/* Enlaces: negro + subrayado (para diferenciar sin color) */
+html[data-a11y="on"] a {
+  color: #000 !important;
+  text-decoration: underline !important;
+}
+
+/* Separador de proyectos siempre visible */
+html[data-a11y="on"] .soft-line {
+  background: #000 !important;
+  opacity: 1 !important;
+}
+
+/* Placeholder de imagen sin color */
+html[data-a11y="on"] .img-placeholder {
+  background: #fff !important;
+  border: 2px dashed #000 !important;
+}
+
+/* Footer: línea y texto en negro */
+html[data-a11y="on"] .footer {
+  color: #000 !important;
+  border-top: 2px solid #000 !important;
+}
+
+/* Línea del header en negro real (algunos navegadores usan border) */
+html[data-a11y="on"] hr.line {
+  background-color: #000 !important;
+  border: none !important;
+  height: 2px;
+  opacity: 1 !important;
+}
