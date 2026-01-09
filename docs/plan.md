@@ -79,7 +79,4 @@ Dame los pasos en orden, con tareas pequeñas y claras.
 - Implementé variables CSS + tipografía con clamp() en `assets/css/base.css`.
 - Implementé responsive layout en `assets/css/layout.css` y componentes en `assets/css/components.css`.
 - Implementé en `assets/js/main.js`:
-  - menú hamburguesa,
-  - toggle de tema con localStorage,
-  - enlace activo con IntersectionObserver,
-  - respeto a prefers-reduced-motion en reveals.
+
